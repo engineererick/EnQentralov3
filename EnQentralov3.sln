@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3.Android", "EnQentralov3\EnQentralov3.Android\EnQentralov3.Android.csproj", "{FAC33CCA-573F-4DDB-9A81-0378861DA178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3", "EnQentralov3\EnQentralov3\EnQentralov3.csproj", "{BB18773E-2523-40C9-9FC3-604D7BD4BC27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3.Backend", "EnQentralo.Backend\EnQentralov3.Backend.csproj", "{D8A5A0A6-0FCB-4E87-A561-8EC2180AF4FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3.API", "EnQentralov3.API\EnQentralov3.API.csproj", "{6D944399-8A86-4B27-821F-0860657AA5D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3.Domain", "EnQentralov3.Domain\EnQentralov3.Domain.csproj", "{40277F12-E539-4C80-ADB3-0B0913BDB98C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3.Common", "EnQentralov3.Common\EnQentralov3.Common.csproj", "{E53BE441-682C-4396-AE27-E5F95886E428}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAC33CCA-573F-4DDB-9A81-0378861DA178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC33CCA-573F-4DDB-9A81-0378861DA178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC33CCA-573F-4DDB-9A81-0378861DA178}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FAC33CCA-573F-4DDB-9A81-0378861DA178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC33CCA-573F-4DDB-9A81-0378861DA178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAC33CCA-573F-4DDB-9A81-0378861DA178}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BB18773E-2523-40C9-9FC3-604D7BD4BC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB18773E-2523-40C9-9FC3-604D7BD4BC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB18773E-2523-40C9-9FC3-604D7BD4BC27}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BB18773E-2523-40C9-9FC3-604D7BD4BC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB18773E-2523-40C9-9FC3-604D7BD4BC27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB18773E-2523-40C9-9FC3-604D7BD4BC27}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D8A5A0A6-0FCB-4E87-A561-8EC2180AF4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A5A0A6-0FCB-4E87-A561-8EC2180AF4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A5A0A6-0FCB-4E87-A561-8EC2180AF4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A5A0A6-0FCB-4E87-A561-8EC2180AF4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D944399-8A86-4B27-821F-0860657AA5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D944399-8A86-4B27-821F-0860657AA5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D944399-8A86-4B27-821F-0860657AA5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D944399-8A86-4B27-821F-0860657AA5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40277F12-E539-4C80-ADB3-0B0913BDB98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40277F12-E539-4C80-ADB3-0B0913BDB98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40277F12-E539-4C80-ADB3-0B0913BDB98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40277F12-E539-4C80-ADB3-0B0913BDB98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E53BE441-682C-4396-AE27-E5F95886E428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E53BE441-682C-4396-AE27-E5F95886E428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E53BE441-682C-4396-AE27-E5F95886E428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E53BE441-682C-4396-AE27-E5F95886E428}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0995F95E-F958-42BD-A86C-010F063678CA}
+	EndGlobalSection
+EndGlobal
