@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using EnQentralo.Backend.Models;
 using EnQentralov3.Common.Models;
+using EnQentralo.Backend.Helpers;
 
 namespace EnQentralo.Backend.Controllers
 {
@@ -48,16 +49,42 @@ namespace EnQentralo.Backend.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "PubId,Tipo,Titulo,Descripcion,Fecha,Lugar,UsuPub")] Publicacion publicacion)
+        public async Task<ActionResult> Create(PublicacionView publicacion)
         {
             if (ModelState.IsValid)
             {
+                var pic = string.Empty;
+                var folder = "~/Content/Publicacions";
+
+                if (publicacion.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(publicacion.ImageFile, folder);
+                    pic = $"{folder}/{pic}";
+                }
+
+                var publicn = this.ToPublicacion(publicacion, pic);
+
                 db.Publicacions.Add(publicacion);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(publicacion);
+        }
+
+        private object ToPublicacion(PublicacionView publicacion, string pic)
+        {
+            return new Publicacion
+            {
+                Descripcion = publicacion.Descripcion,
+                Titulo = publicacion.Titulo,
+                Tipo = publicacion.Tipo,
+                Fecha = publicacion.Fecha,
+                Lugar = publicacion.Lugar,
+                ImagePath = pic,
+                UsuPub = publicacion.UsuPub,
+
+            };
         }
 
         // GET: Publicacions/Edit/5
@@ -67,7 +94,8 @@ namespace EnQentralo.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Publicacion publicacion = await db.Publicacions.FindAsync(id);
+            var publicacion = await this.db.Publicacions.FindAsync(id);
+            //Publicacion publicacion = await db.Publicacions.FindAsync(id);
             if (publicacion == null)
             {
                 return HttpNotFound();
@@ -80,7 +108,7 @@ namespace EnQentralo.Backend.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "PubId,Tipo,Titulo,Descripcion,Fecha,Lugar,UsuPub")] Publicacion publicacion)
+        public async Task<ActionResult> Edit([Bind(Include = "PubId,Tipo,Titulo,Descripcion,ImagePath,Fecha,Lugar,UsuPub")] Publicacion publicacion)
         {
             if (ModelState.IsValid)
             {

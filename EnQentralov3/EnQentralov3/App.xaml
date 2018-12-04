@@ -6,6 +6,16 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            <!--General Colors-->
+            <Color x:Key="MainColor">#105187</Color>
+            <Color x:Key="FontColor">#000000</Color>
+            <Color x:Key="AccentColor1">#000000</Color>
+            <Color x:Key="AccentColor2">#000000</Color>
+            <Color x:Key="BackgroundColor">#f0f1d5</Color>
+            <!--Menu Colors-->
+            <Color x:Key="MenuColor">#f19722</Color>
+            <Color x:Key="MenuFontColor">#000000</Color>
+
             <!-- Locator -->
             <infra:InstanceLocator x:Key="Locator" />
 

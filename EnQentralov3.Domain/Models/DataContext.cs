@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnQentralov3.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace EnQentralov3.Domain.Models
 
         }
 
-        public System.Data.Entity.DbSet<EnQentralov3.Common.Models.Publicacion> Publicacions { get; set; }
+        public DbSet<Publicacion> Publicacions { get; set; }
 
         //public System.Data.Entity.DbSet<EnQentralov3.Common.Models.Publicacion> Publicacions { get; set; }
     }
