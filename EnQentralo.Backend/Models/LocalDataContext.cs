@@ -8,6 +8,6 @@ namespace EnQentralo.Backend.Models
 {
     public class LocalDataContext : DataContext
     {
-        public System.Data.Entity.DbSet<EnQentralov3.Common.Models.Publicacion> Publicacions { get; set; }
+        public new System.Data.Entity.DbSet<EnQentralov3.Common.Models.Publicacion> Publicacions { get; set; }
     }
 }

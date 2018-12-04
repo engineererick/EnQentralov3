@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnQentralov3.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace EnQentralov3
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new PublicacionesPage();
         }
 
         protected override void OnStart()
