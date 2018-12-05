@@ -19,6 +19,20 @@
         public string Lugar { get; set; }
         public string UsuPub { get; set; }
 
+        public string ImageFullPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.ImagePath))
+                {
+                    //var content = System.IO.File.ReadAllBytes(Current.Server.MapPath("~/images/facebook.png"));
+                    return $"noimg.png";
+                }
+
+                return $"https://enqentralov3backend.azurewebsites.net/{this.ImagePath.Substring(1)}";
+            }
+        }
+
         public override string ToString()
         {
             return this.Descripcion;

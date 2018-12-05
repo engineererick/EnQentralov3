@@ -12,13 +12,25 @@
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0"
+                                <Image Grid.Column="0" Source="{Binding ImageFullPath}" WidthRequest="100">
+
+                                </Image>
+                                <Label Grid.Column="1"
+                                       FontAttributes="Bold"
+                                       Text="{Binding Titulo}"/>
+                                <Label Grid.Column="1"
+                                       VerticalOptions="Center"
                                        FontAttributes="Bold"
                                        Text="{Binding Descripcion}"/>
                                 <Label Grid.Column="1"
+                                       VerticalOptions="End"
+                                       FontAttributes="Bold"
+                                       Text="{Binding Lugar}"/>
+                                <Label Grid.Column="2"
                                        HorizontalOptions="End"
                                        FontAttributes="Bold"
                                        Text="{Binding Fecha, StringFormat='{}{0:dd/MM/yyyy}'}"/>

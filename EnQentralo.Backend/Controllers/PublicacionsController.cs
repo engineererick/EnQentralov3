@@ -96,7 +96,7 @@ namespace EnQentralo.Backend.Controllers
             }
 
             var view = this.ToView(publicacion);
-            return View(publicacion);
+            return View(view);
         }
 
         private PublicacionView ToView(Publicacion publicacion)
@@ -132,7 +132,7 @@ namespace EnQentralo.Backend.Controllers
                 }
 
                 var publicn = this.ToPublicacion(publicacion, pic);
-                db.Entry(publicacion).State = EntityState.Modified;
+                db.Entry(publicn).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
