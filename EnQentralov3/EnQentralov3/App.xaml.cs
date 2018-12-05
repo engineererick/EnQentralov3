@@ -14,7 +14,7 @@ namespace EnQentralov3
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new PublicacionesPage());
+            MainPage = new NavigationPage(new MainLoginPage()); //PublicacionesPage
         }
 
         protected override void OnStart()

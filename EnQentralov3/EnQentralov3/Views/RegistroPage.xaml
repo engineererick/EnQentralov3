@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EnQentralov3.Views.RegistroPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BackgroundColor="{StaticResource MainColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1" Margin="20,0,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="0" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image Source="logoenq2.png" VerticalOptions="FillAndExpand" HorizontalOptions="Center" HeightRequest="100"/>
+                    <Entry x:Name="email" Grid.Row="1" Placeholder="Email" PlaceholderColor="White" FontSize="16" />
+                    <!--<inputLayout:SfTextInputLayout Hint="Password" EnablePasswordVisibilityToggle="False">-->
+                    <Entry x:Name="contra" Grid.Row="3" IsPassword="True" Placeholder="Contraseña" PlaceholderColor="White" FontSize="16" />
+                    <!--</inputLayout:SfTextInputLayout>-->
+                    <Button x:Name="btn_Registro" Grid.Row="4" Text="Registrarse" IsVisible="True" BackgroundColor="{StaticResource BackgroundColor}" TextColor="{StaticResource FontColor}" HeightRequest="50" VerticalOptions="Start" />
+                    <Grid Grid.Row="2" />
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
