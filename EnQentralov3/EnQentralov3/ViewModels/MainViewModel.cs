@@ -8,8 +8,6 @@ namespace EnQentralov3.ViewModels
     public class MainViewModel
     {
         public PublicacionesViewModel Publics { get; set; }
-        
-        ApiService apiService;
 
         public MainViewModel()
         {

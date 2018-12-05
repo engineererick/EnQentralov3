@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using EnQentralo.Backend.Helpers;
 using EnQentralo.Backend.Models;
 using EnQentralov3.Common.Models;
-using EnQentralo.Backend.Helpers;
+using System;
+using System.Data.Entity;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace EnQentralo.Backend.Controllers
 {
@@ -82,7 +78,6 @@ namespace EnQentralo.Backend.Controllers
                 Lugar = publicacion.Lugar,
                 ImagePath = pic,
                 UsuPub = publicacion.UsuPub,
-
             };
         }
 
@@ -99,7 +94,23 @@ namespace EnQentralo.Backend.Controllers
             {
                 return HttpNotFound();
             }
+
+            var view = this.ToView(publicacion);
             return View(publicacion);
+        }
+
+        private PublicacionView ToView(Publicacion publicacion)
+        {
+            return new PublicacionView
+            {
+                Descripcion = publicacion.Descripcion,
+                Titulo = publicacion.Titulo,
+                Tipo = publicacion.Tipo,
+                Fecha = publicacion.Fecha,
+                Lugar = publicacion.Lugar,
+                ImagePath = publicacion.ImagePath,
+                UsuPub = publicacion.UsuPub,
+            };
         }
 
         // POST: Publicacions/Edit/5
@@ -107,10 +118,20 @@ namespace EnQentralo.Backend.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "PubId,Tipo,Titulo,Descripcion,ImagePath,Fecha,Lugar,UsuPub")] Publicacion publicacion)
+        public async Task<ActionResult> Edit(PublicacionView publicacion)
         {
             if (ModelState.IsValid)
             {
+                var pic = publicacion.ImagePath;
+                var folder = "~/Content/Publicacions";
+
+                if (publicacion.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(publicacion.ImageFile, folder);
+                    pic = $"{folder}/{pic}";
+                }
+
+                var publicn = this.ToPublicacion(publicacion, pic);
                 db.Entry(publicacion).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
