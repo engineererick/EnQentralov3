@@ -63,8 +63,7 @@ namespace EnQentralo.Backend.Controllers
                 }
 
                 var publicn = this.ToPublicacion(publicacion, pic);
-
-                db.Publicacions.Add(publicacion);
+                this.db.Publicacions.Add(publicn);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -72,7 +71,7 @@ namespace EnQentralo.Backend.Controllers
             return View(publicacion);
         }
 
-        private object ToPublicacion(PublicacionView publicacion, string pic)
+        private Publicacion ToPublicacion(PublicacionView publicacion, string pic)
         {
             return new Publicacion
             {
