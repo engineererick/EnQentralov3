@@ -3,7 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EnQentralov3.Views.PublicacionesPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Publicaciones">
+             Title="Publicaciones"
+             NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="lupa" Command="{Binding BuscaCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Publics}" Padding="5">
             <ListView ItemsSource="{Binding Publics}" HasUnevenRows="True" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" IsPullToRefreshEnabled="True">
@@ -16,16 +22,12 @@
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="{Binding ImageFullPath}" WidthRequest="100">
+                                <Image Grid.Column="0" Source="{Binding ImageFullPath}" WidthRequest="100" />
 
-                                </Image>
-                                <Label Grid.Column="1"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Titulo}"/>
-                                <Label Grid.Column="1"
-                                       VerticalOptions="Center"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Descripcion}"/>
+                                <StackLayout VerticalOptions="Center" Grid.Column="1">
+                                    <Label FontAttributes="Bold" Text="{Binding Titulo}"/>
+                                    <Label FontAttributes="Bold" Text="{Binding Descripcion}"/>
+                                </StackLayout>
                                 <Label Grid.Column="1"
                                        VerticalOptions="End"
                                        FontAttributes="Bold"
