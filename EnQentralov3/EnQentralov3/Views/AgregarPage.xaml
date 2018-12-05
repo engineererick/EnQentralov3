@@ -23,12 +23,17 @@
                 </DatePicker>
                 <Label TextColor="{StaticResource FontColor}" Text="Lugar de pérdida"/>
                 <Entry TextColor="{StaticResource FontColor}" Text="{Binding Lugar, Mode=TwoWay}" BackgroundColor="White"/>
-                <Label TextColor="{StaticResource FontColor}" Text="{Binding Usuario}"/>
-                <Image Source="agregar.png" HorizontalOptions="Center" VerticalOptions="End" WidthRequest="100" HeightRequest="100">
+                <!--<Image Source="agregar.png" HorizontalOptions="Center" VerticalOptions="End" WidthRequest="100" HeightRequest="100">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SaveCommand}" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
+
+                <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand"/>
+                <Button Command="{Binding SaveCommand}" 
+                        BackgroundColor="{StaticResource FontColor}" Text="Agregar" TextColor="White" 
+                        BorderRadius="23" HeightRequest="46"
+                        IsEnabled="{Binding IsEnable}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

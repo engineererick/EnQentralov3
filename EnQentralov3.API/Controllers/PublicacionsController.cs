@@ -21,14 +21,14 @@ namespace EnQentralov3.API.Controllers
         // GET: api/Publicacions
         public IQueryable<Publicacion> GetPublicacions()
         {
-            return db.Publicacions;
+            return db.Publicacions.OrderBy(p => p.Fecha);
         }
 
         // GET: api/Publicacions/5
         [ResponseType(typeof(Publicacion))]
         public async Task<IHttpActionResult> GetPublicacion(int id)
         {
-            Publicacion publicacion = await db.Publicacions.FindAsync(id);
+            var publicacion = await db.Publicacions.FindAsync(id);
             if (publicacion == null)
             {
                 return NotFound();

@@ -40,7 +40,7 @@ namespace EnQentralov3.Views
         {
             try
             {
-                ((NavigationPage)this.Parent).PushAsync(new MenuPage());
+                ((NavigationPage)this.Parent).PushAsync(new PublicacionesPage());
             }
             catch (Exception ex)
             {

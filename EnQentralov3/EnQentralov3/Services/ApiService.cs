@@ -43,8 +43,10 @@
         {
             try
             {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
+                var client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
                 var url = $"{prefix}{controller}";
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
@@ -74,25 +76,42 @@
             }
         }
 
-        public async Task<Publicacion> CreatePub(Publicacion NewPub)
+        public async Task<Response> CreatePub<T>(string urlBase, string prefix, string controller, T model)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                string url = "https://enqentralov3api.azurewebsites.net/api/Publicacions";
-                client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
-
-                string content = JsonConvert.SerializeObject(NewPub);
-                StringContent body = new StringContent(content, Encoding.UTF8, "application/json");
-                var result = await client.PostAsync(url, body);
-
-                string data = await result.Content.ReadAsStringAsync();
-
-                if (result.IsSuccessStatusCode)
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient
                 {
-                    return JsonConvert.DeserializeObject<Publicacion>(data);
+                    BaseAddress = new Uri(urlBase)
+                };
+                var url = $"{prefix}{controller}";
+                var response = await client.PostAsync(url, content);
+                var answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
                 }
-                else
-                    return null;
+
+                var obj = JsonConvert.DeserializeObject<T>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = obj,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
             }
         }
     }

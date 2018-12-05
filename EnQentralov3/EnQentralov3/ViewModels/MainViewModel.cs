@@ -18,28 +18,29 @@ namespace EnQentralov3.ViewModels
         public MainViewModel()
         {
             this.Publics = new PublicacionesViewModel();
-            LoadMenu();
+            //LoadMenu();
         }
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
 
         private void LoadMenu()
         {
-            Menu = new ObservableCollection<MenuItemViewModel>();
-
-            Menu.Add(new MenuItemViewModel()
+            Menu = new ObservableCollection<MenuItemViewModel>
             {
-                Icon = "lupa.png",
-                Title = "Buscar",
-                PageName = "BuscaPage"
-            });
+                new MenuItemViewModel()
+                {
+                    Icon = "lupa.png",
+                    Title = "Buscar",
+                    PageName = "BuscaPage"
+                },
 
-            Menu.Add(new MenuItemViewModel()
-            {
-                Icon = "agregar.png",
-                Title = "Agregar",
-                PageName = "AgregaPage"
-            });
+                new MenuItemViewModel()
+                {
+                    Icon = "agregar.png",
+                    Title = "Agregar",
+                    PageName = "AgregaPage"
+                }
+            };
 
             /*Menu.Add(new MenuItemViewModel()
             {
@@ -64,7 +65,7 @@ namespace EnQentralov3.ViewModels
         }
 
 
-        public ICommand BuscaCommand
+        public ICommand AgregaCommand
         {
             get
             {

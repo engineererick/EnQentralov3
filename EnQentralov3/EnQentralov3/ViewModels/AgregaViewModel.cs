@@ -2,8 +2,6 @@
 using EnQentralov3.Services;
 using GalaSoft.MvvmLight.Command;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,19 +9,33 @@ namespace EnQentralov3.ViewModels
 {
     public class AgregaViewModel : BaseViewModel
     {
-        ApiService apiService;
+        private ApiService apiService;
+        private bool isRunning;
+        private bool isEnable;
 
-        public string Id { get; set; }
+
         public string Tipo { get; set; }
         public string Lugar { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public DateTime Fecha { get; set; }
-        public string Usuario { get; set; }
+
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set { this.SetValue(ref this.isRunning, value); }
+        }
+
+        public bool IsEnable
+        {
+            get { return this.isEnable; }
+            set { this.SetValue(ref this.isEnable, value); }
+        }
 
         public AgregaViewModel()
         {
-            apiService = new ApiService();
+            this.IsEnable = true;
+            this.apiService = new ApiService();
         }
 
         public ICommand SaveCommand
@@ -36,25 +48,37 @@ namespace EnQentralov3.ViewModels
 
         private async void Save()
         {
-            try
+            this.IsRunning = true;
+
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
             {
-                await apiService.CreatePub(new Publicacion()
-                {
-                    PubId = 2,
-                    Titulo = this.Titulo,
-                    UsuPub = "Erick Galindo",
-                    Fecha = this.Fecha,
-                    Lugar = this.Lugar,
-                    Descripcion = this.Descripcion,
-                    Tipo = this.Tipo
-                });
-                
-                await Application.Current.MainPage.DisplayAlert("Publicación", "Se ha creado la publicación.", "Información");
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                return;
             }
-            catch
+
+            var pub = new Publicacion
             {
-                await Application.Current.MainPage.DisplayAlert("Publicación", "Ha ocurrido un error inesperado", "Error");
+                Titulo = this.Titulo,
+                Fecha = this.Fecha,
+                Lugar = this.Lugar,
+                Descripcion = this.Descripcion,
+                Tipo = this.Tipo
+            };
+
+            var response = await this.apiService.CreatePub("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", pub);
+
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
             }
+
+            this.IsRunning = false;
+            await Application.Current.MainPage.Navigation.PopAsync();
+
         }
     }
 }
