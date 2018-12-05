@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EnQentralov3.Views.AgregarPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding NewPub}">
+            <StackLayout Padding="8">
+                <Label TextColor="{StaticResource FontColor}" Text="Tipo búsqueda"/>
+                <Entry TextColor="{StaticResource FontColor}" Text="{Binding Tipo, Mode=TwoWay}" BackgroundColor="White"/>
+                <!--<Picker Title="Selecciona" Element.Menu="{Binding Tipo}" ItemsSource="{Binding TBusq}" ItemDisplayBinding="{Binding value}" SelectedItem="{Binding SelectedTipo}"/>-->
+                <Label TextColor="{StaticResource FontColor}" Text="Título"/>
+                <Entry TextColor="{StaticResource FontColor}" Text="{Binding Titulo, Mode=TwoWay}" BackgroundColor="White"/>
+                <Label TextColor="{StaticResource FontColor}" Text="Descripción"/>
+                <Editor TextColor="{StaticResource FontColor}" Text="{Binding Descripcion, Mode=TwoWay}" BackgroundColor="White"/>
+                <Label TextColor="{StaticResource FontColor}" Text="Fecha de pérdida"/>
+                <!--<DatePicker Date="{Binding Fecha, Mode=TwoWay}"
+                        MinimumDate="1/01/2018" MaximumDate="1/01/2020"
+                        DateSelected="DatePicker_OnDateSelected"/>-->
+                <DatePicker BackgroundColor="White" Date="{Binding Fecha, Mode=TwoWay}" MinimumDate="1/01/2018" MaximumDate="1/01/2020">
+                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                </DatePicker>
+                <Label TextColor="{StaticResource FontColor}" Text="Lugar de pérdida"/>
+                <Entry TextColor="{StaticResource FontColor}" Text="{Binding Lugar, Mode=TwoWay}" BackgroundColor="White"/>
+                <Label TextColor="{StaticResource FontColor}" Text="{Binding Usuario}"/>
+                <Image Source="agregar.png" HorizontalOptions="Center" VerticalOptions="End" WidthRequest="100" HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveCommand}" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

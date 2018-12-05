@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
+    using System.Text;
     using System.Threading.Tasks;
     using EnQentralov3.Common.Models;
     using Newtonsoft.Json;
@@ -70,6 +71,28 @@
                     IsSuccess = false,
                     Message = ex.Message,
                 };
+            }
+        }
+
+        public async Task<Publicacion> CreatePub(Publicacion NewPub)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string url = "https://enqentralov3api.azurewebsites.net/api/Publicacions";
+                client.DefaultRequestHeaders.Add("ZUMO-API-VERSION", "2.0.0");
+
+                string content = JsonConvert.SerializeObject(NewPub);
+                StringContent body = new StringContent(content, Encoding.UTF8, "application/json");
+                var result = await client.PostAsync(url, body);
+
+                string data = await result.Content.ReadAsStringAsync();
+
+                if (result.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<Publicacion>(data);
+                }
+                else
+                    return null;
             }
         }
     }

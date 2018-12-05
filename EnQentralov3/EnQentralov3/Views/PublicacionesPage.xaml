@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="True">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="lupa" Command="{Binding BuscaCommand}"/>
+        <ToolbarItem Icon="lupa.png" Command="{Binding BuscaCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
