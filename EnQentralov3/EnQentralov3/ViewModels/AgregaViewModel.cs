@@ -1,6 +1,8 @@
 ﻿using EnQentralov3.Common.Models;
 using EnQentralov3.Services;
 using GalaSoft.MvvmLight.Command;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -16,6 +18,7 @@ namespace EnQentralov3.ViewModels
         private bool isRunning;
         private bool isEnable;
 
+        private MediaFile file;
 
         public string Tipo { get; set; }
         public string Lugar { get; set; }
@@ -48,6 +51,7 @@ namespace EnQentralov3.ViewModels
         {
             this.IsEnable = true;
             this.apiService = new ApiService();
+            ImageSource = "noimg";
         }
         #endregion
 
@@ -103,6 +107,55 @@ namespace EnQentralov3.ViewModels
             await Application.Current.MainPage.Navigation.PopAsync();
 
         }
+
+        public ICommand ChangeImageCommand
+        {
+            get
+            {
+                return new RelayCommand(ChangeImage);
+            }
+
+        }
+
+        private async void ChangeImage()
+        {
+            await CrossMedia.Current.Initialize();
+
+            var source = await Application.Current.MainPage.DisplayActionSheet("ImageSource", "Cancel", null, "FromGallery", "NewPicture");
+
+            if (source == "Cancel")
+            {
+                this.file = null;
+                return;
+            }
+            
+            if (source == "NewPicture")
+            {
+                this.file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                this.file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (this.file != null)
+            {
+                this.ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = this.file.GetStream();
+                    return stream;
+                });
+            }
+
+        }
+
         #endregion
     }
 }

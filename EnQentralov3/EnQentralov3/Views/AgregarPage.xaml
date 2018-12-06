@@ -8,7 +8,12 @@
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Agrega}">
             <StackLayout Padding="8">
-                <Label TextColor="{StaticResource FontColor}" Text="Tipo búsqueda"/>
+                <Image Source="{Binding ImageSource}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                    <Label TextColor="{StaticResource FontColor}" Text="Tipo búsqueda"/>
                 <Entry TextColor="{StaticResource FontColor}" Text="{Binding Tipo, Mode=TwoWay}" BackgroundColor="White"/>
                 <!--<Picker Title="Selecciona" Element.Menu="{Binding Tipo}" ItemsSource="{Binding TBusq}" ItemDisplayBinding="{Binding value}" SelectedItem="{Binding SelectedTipo}"/>-->
                 <Label TextColor="{StaticResource FontColor}" Text="Título"/>
