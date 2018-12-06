@@ -11,6 +11,7 @@ namespace EnQentralov3.ViewModels
     {
 
         #region Atributos
+        private ImageSource imageSource;
         private ApiService apiService;
         private bool isRunning;
         private bool isEnable;
@@ -32,6 +33,12 @@ namespace EnQentralov3.ViewModels
         {
             get { return this.isEnable; }
             set { this.SetValue(ref this.isEnable, value); }
+        }
+
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { this.SetValue(ref this.imageSource, value); }
         }
         #endregion
 
