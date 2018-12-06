@@ -1,4 +1,5 @@
 ﻿using EnQentralov3.Common.Models;
+using EnQentralov3.Helpers;
 using EnQentralov3.Services;
 using GalaSoft.MvvmLight.Command;
 using Plugin.Media;
@@ -79,13 +80,21 @@ namespace EnQentralov3.ViewModels
                 return;
             }
 
+            byte[] imageArray = null;
+            if (this.file != null)
+            {
+                imageArray = FilesHelper.ReadFully(this.file.GetStream());
+            }
+
             var pub = new Publicacion
             {
                 Titulo = this.Titulo,
                 Fecha = this.Fecha,
                 Lugar = this.Lugar,
                 Descripcion = this.Descripcion,
-                Tipo = this.Tipo
+                Tipo = this.Tipo,
+                ImageArray = imageArray,
+
             };
 
             var response = await this.apiService.CreatePub("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", pub);

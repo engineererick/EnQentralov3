@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3.Android", "EnQentralov3\EnQentralov3.Android\EnQentralov3.Android.csproj", "{FAC33CCA-573F-4DDB-9A81-0378861DA178}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3", "EnQentralov3\EnQentralov3\EnQentralov3.csproj", "{BB18773E-2523-40C9-9FC3-604D7BD4BC27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnQentralov3", "EnQentralov3\EnQentralov3\EnQentralov3.csproj", "{BB18773E-2523-40C9-9FC3-604D7BD4BC27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnQentralov3.Backend", "EnQentralo.Backend\EnQentralov3.Backend.csproj", "{D8A5A0A6-0FCB-4E87-A561-8EC2180AF4FA}"
 EndProject

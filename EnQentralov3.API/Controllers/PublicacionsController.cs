@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using EnQentralov3.API.Helpers;
 using EnQentralov3.Common.Models;
 using EnQentralov3.Domain.Models;
 
@@ -79,6 +81,21 @@ namespace EnQentralov3.API.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if (publicacion.ImageArray != null && publicacion.ImageArray.Length > 0)
+            {
+                var stream = new MemoryStream(publicacion.ImageArray);
+                var guid = Guid.NewGuid().ToString();
+                var file = $"{guid}.jpg";
+                var folder = "~/Content/Publicacions";
+                var fullPath = $"{folder}/{file}";
+                var response = FilesHelper.UploadPhoto(stream, folder, file);
+
+                if (response)
+                {
+                    publicacion.ImagePath = fullPath;
+                }
             }
 
             db.Publicacions.Add(publicacion);

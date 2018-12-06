@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Publicacion
     {
@@ -19,6 +20,10 @@
         public string Lugar { get; set; }
         public string UsuPub { get; set; }
 
+        [NotMapped]
+        public byte[] ImageArray { get; set; }
+
+
         public string ImageFullPath
         {
             get
@@ -29,7 +34,7 @@
                     return $"noimg.png";
                 }
 
-                return $"https://enqentralov3backend.azurewebsites.net/{this.ImagePath.Substring(1)}";
+                return $"https://enqentralov3api.azurewebsites.net/{this.ImagePath.Substring(1)}";
             }
         }
 
