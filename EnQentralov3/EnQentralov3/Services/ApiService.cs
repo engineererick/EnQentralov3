@@ -98,7 +98,7 @@
             }
         }
 
-       /* public async Task<Response> GetList<T>(string urlBase, string prefix, string controller, string tokenType, string accessToken)
+        public async Task<Response> GetList<T>(string urlBase, string prefix, string controller, string tokenType, string accessToken)
         {
             try
             {
@@ -134,7 +134,7 @@
                     Message = ex.Message,
                 };
             }
-        }*/
+        }
 
         public async Task<Response> CreatePub<T>(string urlBase, string prefix, string controller, T model)
         {
@@ -175,7 +175,7 @@
             }
         }
 
-        /*public async Task<Response> CreatePub<T>(string urlBase, string prefix, string controller, T model, string tokenType, string accessToken)
+        public async Task<Response> CreatePub<T>(string urlBase, string prefix, string controller, T model, string tokenType, string accessToken)
         {
             try
             {
@@ -213,7 +213,7 @@
                     Message = ex.Message,
                 };
             }
-        }*/
+        }
 
         /*public async Task<Response> GetUser(string urlBase, string prefix, string controller, string email, string tokenType, string accessToken)
         {

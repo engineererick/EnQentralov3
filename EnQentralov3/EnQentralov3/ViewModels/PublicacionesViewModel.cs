@@ -71,7 +71,7 @@ namespace EnQentralov3.ViewModels
                 return;
             }
 
-            var response = await this.apiService.GetList<Publicacion>("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions");//, Settings.TokenType, Settings.AccessToken);
+            var response = await this.apiService.GetList<Publicacion>("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;

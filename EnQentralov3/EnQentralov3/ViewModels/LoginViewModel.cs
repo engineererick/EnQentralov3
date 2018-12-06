@@ -80,8 +80,8 @@ namespace EnQentralov3.ViewModels
                 return;
             }
 
-            //Settings.TokenType = token.TokenType;
-            //Settings.AccessToken = token.AccessToken;
+            Settings.TokenType = token.TokenType;
+            Settings.AccessToken = token.AccessToken;
             //Settings.IsRemembered = this.IsRemembered;
 
             /*var prefix = Application.Current.Resources["UrlPrefix"].ToString();
@@ -96,7 +96,7 @@ namespace EnQentralov3.ViewModels
             }*/
 
             MainViewModel.GetInstance().Publics = new PublicacionesViewModel();
-            Application.Current.MainPage = new PublicacionesPage();
+            Application.Current.MainPage = new NavigationPage(new PublicacionesPage());
 
             this.IsRunning = false;
             this.IsEnable = true;

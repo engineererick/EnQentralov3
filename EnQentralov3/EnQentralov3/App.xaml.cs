@@ -8,7 +8,7 @@ namespace EnQentralov3
 {
     public partial class App : Application
     {
-        //public static NavigationPage Navigator { get; internal set; }
+        public static NavigationPage Navigator { get; internal set; }
         //public static MasterPage Master { get; internal set; }
 
         public App()
@@ -17,7 +17,7 @@ namespace EnQentralov3
 
             MainViewModel.GetInstance().Login = new LoginViewModel();
 
-            MainPage = new MainLoginPage(); //PublicacionesPage
+            MainPage = new NavigationPage(new MainLoginPage()); //PublicacionesPage MainLoginPage
         }
 
         protected override void OnStart()
