@@ -47,7 +47,7 @@ namespace EnQentralov3
 
             var apiService = new ApiService();
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var prefix = "\api";
             var controller = Application.Current.Resources["UrlUsersController"].ToString();
             var response = await apiService.GetUser(url, prefix, $"{controller}/GetUser", token.UserName, token.TokenType, token.AccessToken);
             if (response.IsSuccess)
