@@ -1,4 +1,5 @@
-﻿using EnQentralov3.Views;
+﻿using EnQentralov3.ViewModels;
+using EnQentralov3.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,14 +8,16 @@ namespace EnQentralov3
 {
     public partial class App : Application
     {
-        public static NavigationPage Navigator { get; internal set; }
-        public static MasterPage Master { get; internal set; }
+        //public static NavigationPage Navigator { get; internal set; }
+        //public static MasterPage Master { get; internal set; }
 
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new PublicacionesPage()); //PublicacionesPage
+            MainViewModel.GetInstance().Login = new LoginViewModel();
+
+            MainPage = new MainLoginPage(); //PublicacionesPage
         }
 
         protected override void OnStart()

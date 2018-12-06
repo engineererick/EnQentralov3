@@ -97,7 +97,7 @@ namespace EnQentralov3.ViewModels
 
             };
 
-            var response = await this.apiService.CreatePub("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", pub);
+            var response = await this.apiService.CreatePub("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", pub);//, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {

@@ -16,6 +16,7 @@ using EnQentralov3.Domain.Models;
 
 namespace EnQentralov3.API.Controllers
 {
+    [Authorize]
     public class PublicacionsController : ApiController
     {
         private DataContext db = new DataContext();

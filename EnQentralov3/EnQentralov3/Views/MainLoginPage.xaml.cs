@@ -15,8 +15,8 @@ namespace EnQentralov3.Views
 		public MainLoginPage ()
 		{
 			InitializeComponent ();
-            btn_Entrar.Clicked += btnEntrar_Clicked;
-            labelTapped();
+            //btn_Entrar.Clicked += btnEntrar_Clicked;
+            //labelTapped();
         }
 
         private void btnEntrar_Clicked(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace EnQentralov3.Views
             }
         }
 
-        private void labelTapped()
+        /*private void labelTapped()
         {
             lblTapped.GestureRecognizers.Add(new TapGestureRecognizer()
             {
@@ -57,6 +57,6 @@ namespace EnQentralov3.Views
                     ((NavigationPage)this.Parent).PushAsync(new RegistroPage());
                 })
             });
-        }
+        }*/
     }
 }

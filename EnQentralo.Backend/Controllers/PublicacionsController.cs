@@ -1,7 +1,6 @@
 ﻿using EnQentralo.Backend.Helpers;
 using EnQentralo.Backend.Models;
 using EnQentralov3.Common.Models;
-using System;
 using System.Data.Entity;
 using System.Net;
 using System.Threading.Tasks;
@@ -9,6 +8,7 @@ using System.Web.Mvc;
 
 namespace EnQentralo.Backend.Controllers
 {
+    [Authorize]
     public class PublicacionsController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

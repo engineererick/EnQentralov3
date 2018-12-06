@@ -12,6 +12,7 @@
 
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Publics}" Padding="5">
+            <!--<SearchBar HeightRequest="20" Placeholder="Buscar..." SearchCommand="{Binding SearchCommand}" Text="{Binding Filter}"/>-->
             <ListView ItemsSource="{Binding Publics}" HasUnevenRows="True" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" IsPullToRefreshEnabled="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>

@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Models\Publicacion.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\TokenResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,65 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EnQentralov3.Views.MainLoginPage"
-             BackgroundColor="{StaticResource MainColor}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="{StaticResource MainColor}"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView BindingContext="{Binding Login}">
+            <StackLayout>
 
-            <Grid BackgroundColor="{StaticResource MainColor}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="50" />
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="1" Margin="20,0,20,0">
+                <Grid BackgroundColor="{StaticResource MainColor}">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="70" />
                     </Grid.RowDefinitions>
-                    <Image Source="logoenq2.png" VerticalOptions="FillAndExpand" HorizontalOptions="Center" HeightRequest="100"/>
-                    <Entry x:Name="EntryEmail" Grid.Row="1" Placeholder="Email" PlaceholderColor="White" FontSize="16" />
-                    <Entry x:Name="EntryContra" IsPassword="True" Grid.Row="2" Placeholder="Contraseña" PlaceholderColor="White" FontSize="16" />
-                    <Button x:Name="btn_Entrar" Text="Entrar" BackgroundColor="{StaticResource BackgroundColor}" TextColor="{StaticResource FontColor}" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" />
-                    <Grid Grid.Row="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label BackgroundColor="White" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                        <Label Text="o" TextColor="White" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0" />
-                        <Label BackgroundColor="White" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+
+                    <Grid Grid.Row="1" Margin="20,0,20,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Image Source="logoenq2.png" VerticalOptions="FillAndExpand" HorizontalOptions="Center" HeightRequest="100"/>
+                        <Entry Text="{Binding Email}" Keyboard="Email" Grid.Row="1" Placeholder="Email" PlaceholderColor="White" FontSize="16" />
+                        <Entry Text="{Binding Passwd}" IsPassword="True" Grid.Row="2" Placeholder="Contraseña" PlaceholderColor="White" FontSize="16" />
+                        <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand"/>
+                        <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource BackgroundColor}" TextColor="{StaticResource FontColor}" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" />
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label BackgroundColor="White" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                            <Label Text="o" TextColor="White" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0" />
+                            <Label BackgroundColor="White" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                        </Grid>
+                        <StackLayout Orientation="Horizontal" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="fb.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding LoginFacebookCommand}" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <!--<StackLayout Orientation="Horizontal" Grid.Row="6" HorizontalOptions="Center">
+                            <Image Source="gg.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding LoginFacebookCommand}" Tapped="OnGgButton" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>-->
                     </Grid>
-                    <StackLayout Orientation="Horizontal" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image Source="fb.png">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnFbButton" NumberOfTapsRequired="1" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Grid.Row="6" HorizontalOptions="Center">
-                        <Image Source="gg.png">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnGgButton" NumberOfTapsRequired="1" />
-                            </Image.GestureRecognizers>
-                        </Image>
+                    <StackLayout Grid.Row="2">
+                        <Label x:Name="lblTapped" Text="¿No tienes una cuenta? Regístrate" TextColor="{StaticResource MenuColor}" VerticalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </Grid>
-                <StackLayout Grid.Row="2">
-                    <Label x:Name="lblTapped" Text="¿No tienes una cuenta? Regístrate" TextColor="{StaticResource MenuColor}" VerticalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-                    <!--<Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Registro" NumberOfTapsRequired="1"/>
-                    </Label.GestureRecognizers>-->
-                </StackLayout>
-            </Grid>
 
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

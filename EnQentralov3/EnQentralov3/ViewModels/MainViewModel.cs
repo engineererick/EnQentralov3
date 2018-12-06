@@ -12,18 +12,30 @@ namespace EnQentralov3.ViewModels
 {
     public class MainViewModel
     {
+        public LoginViewModel Login { get; set; }
         public AgregaViewModel Agrega { get; set; }
         public PublicacionesViewModel Publics { get; set; }
         public BuscaViewModel BuscPub { get; set; }
 
         public MainViewModel()
         {
-            this.Publics = new PublicacionesViewModel();
+            instance = this;
             Agrega = new AgregaViewModel();
             //LoadMenu();
         }
 
-        public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+
+        private static MainViewModel instance;
+
+        public static MainViewModel GetInstance()
+        {
+            if (instance == null)
+                return new MainViewModel();
+            return instance;
+        }
+
+
+        /*public ObservableCollection<MenuItemViewModel> Menu { get; set; }
 
         private void LoadMenu()
         {
@@ -63,8 +75,8 @@ namespace EnQentralov3.ViewModels
                 Icon = "cerrars.png",
                 Title = "Cerrar Sesión",
                 PageName = "CerrarSesion"
-            });*/
-        }
+            });
+        }*/
 
 
         public ICommand AgregaCommand

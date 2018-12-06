@@ -1,4 +1,5 @@
 ﻿using EnQentralov3.Common.Models;
+using EnQentralov3.Helpers;
 using EnQentralov3.Services;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace EnQentralov3.ViewModels
         #region Atributos
         private ApiService apiService;
 
+        public string Filter { get; set; }
         private bool isRefreshing;
 
         private ObservableCollection<Publicacion> publics;
@@ -68,10 +70,8 @@ namespace EnQentralov3.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
                 return;
             }
-            //var url = Application.Current.Resources["UrlAPI"].ToString();
-            //var urlPrefix = Application.Current.Resources["UrlPrefix"].ToString();
-            //var urlController = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.GetList<Publicacion>("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions");
+
+            var response = await this.apiService.GetList<Publicacion>("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions");//, Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
@@ -94,6 +94,7 @@ namespace EnQentralov3.ViewModels
                 return new RelayCommand(LoadPubs);
             }
         }
+
         #endregion
     }
 }
