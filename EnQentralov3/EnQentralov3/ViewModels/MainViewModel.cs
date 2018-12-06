@@ -12,12 +12,14 @@ namespace EnQentralov3.ViewModels
 {
     public class MainViewModel
     {
+        public AgregaViewModel Agrega { get; set; }
         public PublicacionesViewModel Publics { get; set; }
         public BuscaViewModel BuscPub { get; set; }
 
         public MainViewModel()
         {
             this.Publics = new PublicacionesViewModel();
+            Agrega = new AgregaViewModel();
             //LoadMenu();
         }
 
@@ -42,14 +44,14 @@ namespace EnQentralov3.ViewModels
                 }
             };
 
-            /*Menu.Add(new MenuItemViewModel()
+            Menu.Add(new MenuItemViewModel()
             {
                 Icon = "publicaciones.png",
                 Title = "Publicaciones",
-                PageName = "Publicaciones"
+                PageName = "PublicacionesPage"
             });
 
-            Menu.Add(new MenuItemViewModel()
+            /*Menu.Add(new MenuItemViewModel()
             {
                 Icon = "ajustes.png",
                 Title = "Ajustes",
@@ -69,11 +71,11 @@ namespace EnQentralov3.ViewModels
         {
             get
             {
-                return new RelayCommand(GoToBusca);
+                return new RelayCommand(GoToAgrega);
             }
         }
 
-        private async void GoToBusca()
+        private async void GoToAgrega()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AgregarPage());
         }

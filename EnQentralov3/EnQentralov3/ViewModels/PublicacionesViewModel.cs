@@ -10,6 +10,7 @@ namespace EnQentralov3.ViewModels
 {
     public class PublicacionesViewModel : BaseViewModel
     {
+        #region Atributos
         private ApiService apiService;
 
         private bool isRefreshing;
@@ -27,13 +28,35 @@ namespace EnQentralov3.ViewModels
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
+        #endregion
 
+
+        #region Constructor
         public PublicacionesViewModel()
         {
+            instance = this;
             this.apiService = new ApiService();
             this.LoadPubs();
         }
+        #endregion
 
+
+        #region Singleton
+        private static PublicacionesViewModel instance;
+
+        public static PublicacionesViewModel GetInstance()
+        {
+            if (instance==null)
+            {
+                return new PublicacionesViewModel();
+            }
+
+            return instance;
+        }
+        #endregion
+
+
+        #region Metodoss
         private async void LoadPubs()
         {
             this.IsRefreshing = true;
@@ -60,7 +83,10 @@ namespace EnQentralov3.ViewModels
             this.Publics = new ObservableCollection<Publicacion>(list);
             this.IsRefreshing = false;
         }
+        #endregion
 
+
+        #region Comandos
         public ICommand RefreshCommand
         {
             get
@@ -68,5 +94,6 @@ namespace EnQentralov3.ViewModels
                 return new RelayCommand(LoadPubs);
             }
         }
+        #endregion
     }
 }

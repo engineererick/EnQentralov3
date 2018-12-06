@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EnQentralov3.Views.AgregarPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Agregar">
 
     <ContentPage.Content>
-        <ScrollView BindingContext="{Binding NewPub}">
+        <ScrollView BindingContext="{Binding Agrega}">
             <StackLayout Padding="8">
                 <Label TextColor="{StaticResource FontColor}" Text="Tipo búsqueda"/>
                 <Entry TextColor="{StaticResource FontColor}" Text="{Binding Tipo, Mode=TwoWay}" BackgroundColor="White"/>
