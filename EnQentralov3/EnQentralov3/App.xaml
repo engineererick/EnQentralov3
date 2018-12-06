@@ -24,6 +24,13 @@
             <!--<x:String x:Key="UrlPrefix">/api</x:String>
             <x:String x:Key="UrlProductsController">/Products</x:String>-->
 
+            <!-- Facebook -->
+            <x:String x:Key="FacebookAppID">2251018141577572</x:String>
+            <x:String x:Key="FacebookAuthURL">https://www.facebook.com/dialog/oauth/</x:String>
+            <x:String x:Key="FacebookRedirectURL">https://www.facebook.com/connect/login_success.html</x:String>
+            <x:String x:Key="FacebookScope">email</x:String>
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

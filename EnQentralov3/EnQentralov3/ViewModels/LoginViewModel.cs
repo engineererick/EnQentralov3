@@ -35,6 +35,33 @@ namespace EnQentralov3.ViewModels
             this.IsEnable = true;
         }
 
+
+        public ICommand LoginFacebookCommand
+        {
+            get
+            {
+                return new RelayCommand(LoginFacebook);
+            }
+        }
+
+        private async void LoginFacebook()
+        {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnable = true;
+                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                return;
+            }
+
+            await Application.Current.MainPage.Navigation.PushAsync(
+                new LoginFacebookPage());
+        }
+
+
+
         public ICommand LoginCommand
         {
             get

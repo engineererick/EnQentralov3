@@ -1,4 +1,5 @@
-﻿using EnQentralov3.Services;
+﻿using EnQentralov3.Common.Models;
+using EnQentralov3.Services;
 using EnQentralov3.Views;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -16,6 +17,8 @@ namespace EnQentralov3.ViewModels
         public AgregaViewModel Agrega { get; set; }
         public PublicacionesViewModel Publics { get; set; }
         public BuscaViewModel BuscPub { get; set; }
+
+        public MyUserASP UserASP { get; set; }
 
         public MainViewModel()
         {
