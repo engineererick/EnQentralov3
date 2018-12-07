@@ -2,8 +2,11 @@
 using EnQentralov3.Helpers;
 using EnQentralov3.Services;
 using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -13,6 +16,9 @@ namespace EnQentralov3.ViewModels
     {
         #region Atributos
         private ApiService apiService;
+        public DataService dataService;
+
+        public List<Publicacion> MyPubs { get; set; }
 
         public string Filter { get; set; }
         private bool isRefreshing;
@@ -37,6 +43,7 @@ namespace EnQentralov3.ViewModels
         public PublicacionesViewModel()
         {
             instance = this;
+            this.dataService = new DataService();
             this.apiService = new ApiService();
             this.LoadPubs();
         }
@@ -58,31 +65,65 @@ namespace EnQentralov3.ViewModels
         #endregion
 
 
-        #region Metodoss
+        #region Metodos
         private async void LoadPubs()
         {
             this.IsRefreshing = true;
 
             var connection = await this.apiService.CheckConnection();
-            if (!connection.IsSuccess)
+            if (connection.IsSuccess)
             {
-                this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
-                return;
+                var answer = await this.LoadPubsFromAPI();
+                if (answer)
+                {
+                    this.SaveProductsToDB();
+                }
+            }
+            else
+            {
+                await this.LoadPubsFromDB();
             }
 
+            if (this.MyPubs == null || this.MyPubs.Count == 0)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Error", "Intenta más tarde", "Aceptar");
+                return;
+            }
+            
+            
+            this.IsRefreshing = false;
+        }
+
+        private async Task LoadPubsFromDB()
+        {
+            this.MyPubs = await this.dataService.GetAllProducts();
+        }
+
+        private async Task SaveProductsToDB()
+        {
+            await this.dataService.DeleteAllProducts();
+            this.dataService.Insert(this.MyPubs);
+        }
+
+
+        private async Task<bool> LoadPubsFromAPI()
+        {
             var response = await this.apiService.GetList<Publicacion>("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
-                this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
-                return;
+                return false;
+            }
+            else
+            {
+                await this.LoadPubsFromDB();
             }
 
-            var list = (List<Publicacion>)response.Result;
-            this.Publics = new ObservableCollection<Publicacion>(list);
-            this.IsRefreshing = false;
+            this.MyPubs = (List<Publicacion>)response.Result;
+            this.Publics = new ObservableCollection<Publicacion>(MyPubs);
+            return true;
         }
+
         #endregion
 
 
