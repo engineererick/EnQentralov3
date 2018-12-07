@@ -3,6 +3,7 @@ using EnQentralov3.Helpers;
 using EnQentralov3.Services;
 using EnQentralov3.Views;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -125,16 +126,16 @@ namespace EnQentralov3.ViewModels
             Settings.AccessToken = token.AccessToken;
             //Settings.IsRemembered = this.IsRemembered;
 
-            /*var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlUsersController"].ToString();
             var response = await this.apiService.GetUser(url, prefix, $"{controller}/GetUser", this.Email, token.TokenType, token.AccessToken);
             if (response.IsSuccess)
             {
                 var userASP = (MyUserASP)response.Result;
                 MainViewModel.GetInstance().UserASP = userASP;
-                MainViewModel.GetInstance().RegisterDevice();
+                //MainViewModel.GetInstance().RegisterDevice();
                 Settings.UserASP = JsonConvert.SerializeObject(userASP);
-            }*/
+            }
 
             MainViewModel.GetInstance().Publics = new PublicacionesViewModel();
             Application.Current.MainPage = new MasterPage();
