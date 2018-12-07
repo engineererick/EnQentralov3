@@ -56,8 +56,7 @@ namespace EnQentralov3.ViewModels
                 return;
             }
 
-            await Application.Current.MainPage.Navigation.PushAsync(
-                new LoginFacebookPage());
+            await App.Navigator.PushAsync(new LoginFacebookPage());
         }
 
 
@@ -123,7 +122,7 @@ namespace EnQentralov3.ViewModels
             }*/
 
             MainViewModel.GetInstance().Publics = new PublicacionesViewModel();
-            Application.Current.MainPage = new NavigationPage(new PublicacionesPage());
+            Application.Current.MainPage = new MasterPage();
 
             this.IsRunning = false;
             this.IsEnable = true;

@@ -97,7 +97,7 @@ namespace EnQentralov3.ViewModels
 
             };
 
-            var response = await this.apiService.CreatePub("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", pub);//, Settings.TokenType, Settings.AccessToken);
+            var response = await this.apiService.CreatePub("https://enqentralov3api.azurewebsites.net", "/api", "/Publicacions", pub, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {
@@ -113,7 +113,7 @@ namespace EnQentralov3.ViewModels
 
             this.IsEnable = true;
             this.IsRunning = false;
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
 
         }
 

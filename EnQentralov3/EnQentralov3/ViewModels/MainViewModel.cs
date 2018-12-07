@@ -20,11 +20,13 @@ namespace EnQentralov3.ViewModels
 
         public MyUserASP UserASP { get; set; }
 
+        public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+
         public MainViewModel()
         {
             instance = this;
             Agrega = new AgregaViewModel();
-            //LoadMenu();
+            LoadMenu();
         }
 
 
@@ -38,48 +40,32 @@ namespace EnQentralov3.ViewModels
         }
 
 
-        /*public ObservableCollection<MenuItemViewModel> Menu { get; set; }
-
         private void LoadMenu()
         {
-            Menu = new ObservableCollection<MenuItemViewModel>
-            {
-                new MenuItemViewModel()
-                {
-                    Icon = "lupa.png",
-                    Title = "Buscar",
-                    PageName = "BuscaPage"
-                },
+            this.Menu = new ObservableCollection<MenuItemViewModel>();
 
-                new MenuItemViewModel()
-                {
-                    Icon = "agregar.png",
-                    Title = "Agregar",
-                    PageName = "AgregaPage"
-                }
-            };
-
-            Menu.Add(new MenuItemViewModel()
+            this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "publicaciones.png",
-                Title = "Publicaciones",
-                PageName = "PublicacionesPage"
+                Icon = "lupa",
+                PageName = "AboutPage",
+                Title = "Acerca",
             });
 
-            /*Menu.Add(new MenuItemViewModel()
+            this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "ajustes.png",
-                Title = "Ajustes",
-                PageName = "Ajustes"
+                Icon = "ajustes",
+                PageName = "SetupPage",
+                Title = "Configuración",
             });
 
-            Menu.Add(new MenuItemViewModel()
+            this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "cerrars.png",
+                Icon = "cerrars",
+                PageName = "LoginPage",
                 Title = "Cerrar Sesión",
-                PageName = "CerrarSesion"
             });
-        }*/
+        }
+
 
 
         public ICommand AgregaCommand
@@ -92,7 +78,7 @@ namespace EnQentralov3.ViewModels
 
         private async void GoToAgrega()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new AgregarPage());
+            await App.Navigator.PushAsync(new AgregarPage());
         }
     }
 }
