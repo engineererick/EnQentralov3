@@ -38,7 +38,7 @@ namespace EnQentralov3
         {
             if (token == null)
             {
-                Application.Current.MainPage = new NavigationPage(new MainLoginPage());
+                Current.MainPage = new NavigationPage(new MainLoginPage());
                 return;
             }
             
@@ -46,9 +46,9 @@ namespace EnQentralov3
             Settings.TokenType = token.TokenType;
 
             var apiService = new ApiService();
-            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var url = Current.Resources["UrlAPI"].ToString();
             var prefix = "\api";
-            var controller = Application.Current.Resources["UrlUsersController"].ToString();
+            var controller = Current.Resources["UrlUsersController"].ToString();
             var response = await apiService.GetUser(url, prefix, $"{controller}/GetUser", token.UserName, token.TokenType, token.AccessToken);
             if (response.IsSuccess)
             {
@@ -58,7 +58,10 @@ namespace EnQentralov3
             }
 
             MainViewModel.GetInstance().Publics = new PublicacionesViewModel();
-            Application.Current.MainPage = new PublicacionesPage();
+            Current.MainPage = new PublicacionesPage();
+            /*MainViewModel.GetInstance().Agrega = new AgregaViewModel();
+            Application.Current.MainPage = new AgregarPage();*/
+
         }
 
 
