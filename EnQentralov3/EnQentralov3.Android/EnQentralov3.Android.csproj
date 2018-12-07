@@ -81,6 +81,7 @@
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\LoginFacebookPageRenderer.cs" />
     <Compile Include="Implementations\PathService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -104,6 +105,10 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EnQentralov3.Common\EnQentralov3.Common.csproj">
+      <Project>{E53BE441-682C-4396-AE27-E5F95886E428}</Project>
+      <Name>EnQentralov3.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EnQentralov3\EnQentralov3.csproj">
       <Project>{C38DAAA4-3C58-4FAE-9D3F-D20AC529C432}</Project>
       <Name>EnQentralov3</Name>
@@ -147,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\sinfoto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\insta.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

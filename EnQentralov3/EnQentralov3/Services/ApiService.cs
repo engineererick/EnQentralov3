@@ -265,8 +265,7 @@
                 "is_verified,birthday,languages,work,website,religion," + "location,locale,link,first_name,last_name," + "hometown&access_token=" + accessToken;
             var httpClient = new HttpClient();
             var userJson = await httpClient.GetStringAsync(requestUrl);
-            var facebookResponse =
-                JsonConvert.DeserializeObject<FacebookResponse>(userJson);
+            var facebookResponse = JsonConvert.DeserializeObject<FacebookResponse>(userJson);
             return facebookResponse;
         }
 
@@ -282,14 +281,9 @@
                 var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
-                {
                     return null;
-                }
 
-                var tokenResponse = await GetToken(
-                    urlBase,
-                    profile.Id,
-                    profile.Id);
+                var tokenResponse = await GetToken(urlBase, profile.Id, profile.Id);
                 return tokenResponse;
             }
             catch

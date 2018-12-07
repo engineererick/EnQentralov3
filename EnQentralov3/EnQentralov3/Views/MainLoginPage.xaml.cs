@@ -23,30 +23,7 @@ namespace EnQentralov3.Views
         {
             ((NavigationPage)this.Parent).PushAsync(new PublicacionesPage());
         }
-
-        void OnFbButton(object sender, EventArgs e)
-        {
-            try
-            {
-                ((NavigationPage)this.Parent).PushAsync(new PublicacionesPage());
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        void OnGgButton(object sender, EventArgs e)
-        {
-            try
-            {
-                ((NavigationPage)this.Parent).PushAsync(new PublicacionesPage());
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        
 
         /*private void labelTapped()
         {

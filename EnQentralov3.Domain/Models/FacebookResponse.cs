@@ -1,4 +1,4 @@
-﻿namespace EnQentralov3.Common.Models
+﻿namespace EnQentralov3.Domain.Models
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;

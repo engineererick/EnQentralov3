@@ -52,6 +52,31 @@ namespace EnQentralov3.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
 
+        public ICommand LoginInstagramComand
+        {
+            get
+            {
+                return new RelayCommand(LoginInstagram);
+            }
+        }
+
+        private async void LoginInstagram()
+        {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnable = true;
+                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Aceptar");
+                return;
+            }
+
+            await Application.Current.MainPage.Navigation.PushAsync(
+                new LoginInstagramPage());
+        }
+
+
         public ICommand LoginFacebookCommand
         {
             get
@@ -72,7 +97,7 @@ namespace EnQentralov3.ViewModels
                 return;
             }
 
-            await App.Navigator.PushAsync(new LoginFacebookPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginFacebookPage());
         }
 
 

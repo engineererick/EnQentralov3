@@ -278,6 +278,7 @@ namespace EnQentralo.Backend.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
+            ControllerContext.HttpContext.Session.RemoveAll();
             // Solicitar redireccionamiento al proveedor de inicio de sesión externo
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }

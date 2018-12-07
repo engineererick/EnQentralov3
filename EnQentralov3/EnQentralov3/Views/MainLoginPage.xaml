@@ -24,6 +24,7 @@
                             <RowDefinition Height="40" />
                             <RowDefinition Height="40" />
                             <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Image Source="logoenq2.png" VerticalOptions="FillAndExpand" HorizontalOptions="Center" HeightRequest="100"/>
@@ -44,17 +45,17 @@
                         <StackLayout Orientation="Horizontal" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center">
                             <Image Source="fb.png">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding LoginFacebookCommand}" NumberOfTapsRequired="1" />
+                                    <TapGestureRecognizer Command="{Binding LoginFacebookCommand}"/>
                                 </Image.GestureRecognizers>
                             </Image>
                         </StackLayout>
-                        <!--<StackLayout Orientation="Horizontal" Grid.Row="6" HorizontalOptions="Center">
-                            <Image Source="gg.png">
+                        <StackLayout Orientation="Horizontal" Grid.Row="6" HorizontalOptions="Center">
+                            <Image Source="insta.png" Aspect="AspectFit" HeightRequest="70" WidthRequest="70">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding LoginFacebookCommand}" Tapped="OnGgButton" NumberOfTapsRequired="1" />
+                                    <TapGestureRecognizer Command="{Binding LoginInstagramComand}"/>
                                 </Image.GestureRecognizers>
                             </Image>
-                        </StackLayout>-->
+                        </StackLayout>
                     </Grid>
                     <StackLayout Grid.Row="2">
                         <!--<Label x:Name="lblTapped" Text="¿No tienes una cuenta? Regístrate" TextColor="{StaticResource MenuColor}" VerticalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>-->
