@@ -3,6 +3,7 @@ using EnQentralov3.Helpers;
 using EnQentralov3.Services;
 using EnQentralov3.Views;
 using GalaSoft.MvvmLight.Command;
+using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -35,6 +36,20 @@ namespace EnQentralov3.ViewModels
             this.IsEnable = true;
         }
 
+
+        public ICommand RegisterCommand
+        {
+            get
+            {
+                return new RelayCommand(Register);
+            }
+        }
+
+        private async void Register()
+        {
+            MainViewModel.GetInstance().Register = new RegisterViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
 
         public ICommand LoginFacebookCommand
         {

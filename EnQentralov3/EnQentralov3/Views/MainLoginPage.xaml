@@ -13,7 +13,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="40" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="1" Margin="20,0,20,0">
@@ -24,14 +24,13 @@
                             <RowDefinition Height="40" />
                             <RowDefinition Height="40" />
                             <RowDefinition Height="40" />
-                            <RowDefinition Height="40" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Image Source="logoenq2.png" VerticalOptions="FillAndExpand" HorizontalOptions="Center" HeightRequest="100"/>
                         <Entry Text="{Binding Email}" Keyboard="Email" Grid.Row="1" Placeholder="Email" PlaceholderColor="White" FontSize="16" />
                         <Entry Text="{Binding Passwd}" IsPassword="True" Grid.Row="2" Placeholder="Contraseña" PlaceholderColor="White" FontSize="16" />
                         <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="CenterAndExpand"/>
-                        <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource BackgroundColor}" TextColor="{StaticResource FontColor}" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" />
+                        <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource BackgroundColor}" TextColor="Black" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" />
                         <Grid Grid.Row="4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -58,7 +57,8 @@
                         </StackLayout>-->
                     </Grid>
                     <StackLayout Grid.Row="2">
-                        <Label x:Name="lblTapped" Text="¿No tienes una cuenta? Regístrate" TextColor="{StaticResource MenuColor}" VerticalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                        <!--<Label x:Name="lblTapped" Text="¿No tienes una cuenta? Regístrate" TextColor="{StaticResource MenuColor}" VerticalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>-->
+                        <Button Command="{Binding RegisterCommand}" BackgroundColor="{StaticResource MenuColor}" TextColor="Black" HeightRequest="50" VerticalOptions="Start" Grid.Row="3" />
                     </StackLayout>
                 </Grid>
 

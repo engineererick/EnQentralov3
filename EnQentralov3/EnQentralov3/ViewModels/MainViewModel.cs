@@ -17,6 +17,7 @@ namespace EnQentralov3.ViewModels
         public AgregaViewModel Agrega { get; set; }
         public PublicacionesViewModel Publics { get; set; }
         public BuscaViewModel BuscPub { get; set; }
+        public RegisterViewModel Register { get; set; }
 
         public MyUserASP UserASP { get; set; }
 
